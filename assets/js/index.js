@@ -16,7 +16,7 @@ sidebar();
 const homePageSections = [
     {
         title: "Upcoming Movies",
-        path: "/movies/upcoming"
+        path: "/movie/upcoming"
     },
     {
         title: "Today\'s Trending Movies",
@@ -24,7 +24,7 @@ const homePageSections = [
     },
     {
         title: "Top Rated Movies",
-        path: "/movie/top-rated"
+        path: "/movie/top_rated"
     }
 ]
 
@@ -201,8 +201,8 @@ const createMovieList = function({ results: movieList}, title) {
         const movieCard = createMovieCard(movie); // called from movie_card.js
 
         movieListElem.querySelector(".slider-inner").appendChild(movieCard);
-
-        pageContent.appendChild(movieListElem);
     }
+
+    pageContent.appendChild(movieListElem);
 
 }
