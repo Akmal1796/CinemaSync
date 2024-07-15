@@ -34,11 +34,11 @@ export function sidebar() {
 
                 <p class="title">Language</p>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link">English</a>
+                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=en", "English")'>English</a>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link">Tamil</a>
+                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=ta", "Tamil")'>Tamil</a>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link">French</a>
+                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=fr", "French")'>French</a>
 
             </div>
 
@@ -54,11 +54,12 @@ export function sidebar() {
     const genreLink = function() {
 
         for(const [genreId, genreName] of Object.entries(genreList)) {
+            
             const link = document.createElement("a");
             link.classList.add("sidebar-link");
             link.setAttribute("href", "./movie-list.html");
             link.setAttribute("menu-close", "");
-            //link.setAttribute("onclick", `getMovieList("with_genres=${genreId}", "${genreName}")`);
+            link.setAttribute("onclick", `getMovieList("with_genres=${genreId}", "${genreName}")`);
 
             link.textContent = genreName;
 
