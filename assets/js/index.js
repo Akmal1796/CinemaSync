@@ -4,6 +4,7 @@
 
 import { sidebar } from "./sidebar.js";
 import { api_key, imageBaseURL, fetchDataFromServer } from "./api.js";
+import { createMovieCard } from './movie-card.js';
 
 const pageContent = document.querySelector("[page-content]");
 
@@ -12,6 +13,20 @@ sidebar();
 
 /* Home page sections (Top rated, Upcoming, Trending movies) */
 
+const homePageSections = [
+    {
+        title: "Upcoming Movies",
+        path: "/movies/upcoming"
+    },
+    {
+        title: "Today\'s Trending Movies",
+        path: "/trending/movie/week"
+    },
+    {
+        title: "Top Rated Movies",
+        path: "/movie/top-rated"
+    }
+]
 
 
 /* 
@@ -45,7 +60,7 @@ sidebar();
     });
 
 
-const heroBanner = function({ results: movielist }) {
+const heroBanner = function({ results: movieList }) {
 
     const banner = document.createElement("section");
     banner.classList.add("banner");
@@ -64,7 +79,7 @@ const heroBanner = function({ results: movielist }) {
 
     let controlItemIndex = 0;
 
-    for(const [index, movie] of movielist.entries()) {
+    for(const [index, movie] of movieList.entries()) {
 
         const {
             backdrop_path,
@@ -128,6 +143,11 @@ const heroBanner = function({ results: movielist }) {
 
     addHeroSlide();
 
+    /* Fetch data for home page sections(top rated, upcoming, trending movies) */
+    for(const { title, path} of homePageSections) {
+        fetchDataFromServer(`https://api.themoviedb.org/3${path}?api_key=${api_key}&page=1`, createMovieList, title);
+    }
+
 }
 
 
@@ -157,5 +177,32 @@ const addHeroSlide = function() {
     }
 
     addEventOnElements(sliderControls, "click", sliderStart);
+
+}
+
+
+const createMovieList = function({ results: movieList}, title) {
+
+    const movieListElem = document.createElement("section");
+    movieListElem.classList.add("movie-list");
+    movieListElem.ariaLabel = `${title}`;
+
+    movieListElem.innerHTML = `
+            <div class="title-wrapper">
+                <h3 class="title-large">${title}</h3>
+            </div>
+
+            <div class="slider-list">
+                <div class="slider-inner"></div>
+            </div>
+    `;
+
+    for (const movie of movieList) {
+        const movieCard = createMovieCard(movie); // called from movie_card.js
+
+        movieListElem.querySelector(".slider-inner").appendChild(movieCard);
+
+        pageContent.appendChild(movieListElem);
+    }
 
 }
