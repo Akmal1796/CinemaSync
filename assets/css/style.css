@@ -583,7 +583,7 @@ body {
   min-width: 200px;
 }
 
-.movie-card .card-banner {width: 100%;}
+.movie-card .card-banner {width: 200px;}
 
 .movie-card .title {
   width: 100%;
