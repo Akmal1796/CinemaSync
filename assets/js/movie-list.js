@@ -7,6 +7,7 @@ import { createMovieCard } from "./movie-card.js";
 //Collect genre name & url parameter from local sorage
 const genreName = window.localStorage.getItem("genreName");
 const urlParam = window.localStorage.getItem("urlParam");
+
 const pageContent = document.querySelector("[page-content]");
 
 sidebar();
@@ -42,5 +43,30 @@ fetchDataFromServer(`https://api.themoviedb.org/3/discover/movie?api_key=${api_k
     }
 
     pageContent.appendChild(movieListElem);
+
+
+    /* Load more button functianality */
+    document.querySelector("[load-more]").addEventListener("click", function () {
+        if (currentPage >= totalPages) {
+            this.style.display = "none"; //this == loading-btn
+            return;
+        }
+
+        currentPage++;
+        this.classList.add("loading"); //this == loading-btn
+
+        fetchDataFromServer(`https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`, ({ results: movieList }) => {
+
+            this.classList.remove("loading");  //this == loading-btn
+
+            for (const movie of movieList) {
+                const movieCard = createMovieCard(movie);
+
+                movieListElem.querySelector(".grid-list").appendChild(movieCard);
+            }
+
+        });
+    });
+
 
 });
