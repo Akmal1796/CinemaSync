@@ -9,6 +9,11 @@ const pageContent = document.querySelector("[page-content]");
 
 sidebar();
 
+
+/* Home page sections (Top rated, Upcoming, Trending movies) */
+
+
+
 /* 
     Fetch all genres eg. [{ "id": "123", "name": "Action"}]
     then change genre formate eg: {123: "Action" }
