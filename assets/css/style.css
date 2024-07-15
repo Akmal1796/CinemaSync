@@ -177,7 +177,7 @@ body {
   gap: 8px;
 }
 
-.header.logo {margin-inline-end: auto;}
+.header .logo {margin-inline-end: auto;}
 
 .search-btn,
 .menu-btn {padding: 12px;}
