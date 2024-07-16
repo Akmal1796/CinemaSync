@@ -717,9 +717,10 @@ body {
   padding: 50px 24px;
   overflow-y: overlay;
   z-index: 4;
+  display: none;
 }
 
-.search-model .active {display: block;}
+.search-model.active {display: block;}
 
 .search-model .label {
   color: var(--primary-variant);
