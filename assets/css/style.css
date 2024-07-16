@@ -755,6 +755,8 @@ body {
 
 }
 
+
+
 /* Responsive for larger than 768px screen */
 
 @media (min-width: 768px) {
@@ -785,7 +787,7 @@ body {
     width: 360px;
   }
 
-  .banner {height: 550px;}
+  .banner {height: 500px;}
 
   .banner-content {
     bottom: 50%;
@@ -817,5 +819,53 @@ body {
 
   .movie-detail .slider-inner::before {display: none;}
 
+
+}
+
+
+
+/* Responsive for larger than 1200px screen */
+
+@media (min-width: 1200px) {
+ 
+  /* HOME PAGE */
+  .header {padding: 28px 56px;}
+
+  .logo img {width: 160px;}
+
+  .menu-btn,
+  .overlay {display: none;}
+
+  main {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    visibility: visible;
+    border-block-start: 0;
+    height: calc(100vh - 104px);
+  }
+
+  .sidebar.active {transform: none;}
+
+  .sidebar-list,
+  .sidebar-footer {padding-inline: 56px;}
+
+  .container {
+    height: calc(100vh - 104px);
+    border-top-left-radius: var(--radius-36);
+  }
+
+  .banner-content {left: 100px;}
+
+  .search-model {
+    top: 104px;
+    padding: 60px;
+  }
+
+  /* MOVIE DETAIL PAGE */
+  .backdrop-image {border-top-left-radius: var(--radius-36);}
 
 }
