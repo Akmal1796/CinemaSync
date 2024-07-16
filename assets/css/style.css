@@ -732,3 +732,25 @@ body {
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+
+
+/* Responsive for larger than 575px screen */
+
+@media (min-width: 575px) {
+  
+  /* HOME PAGE */
+
+  .banner-content {
+    right: auto;
+    max-width: 500px;
+  }
+
+  .slider-control {left: calc(100% - 400px);}
+
+
+
+  /* DETAILS PAGE */
+
+  .detail-content {max-width: 750px;}
+
+}
