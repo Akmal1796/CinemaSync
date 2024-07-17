@@ -546,6 +546,12 @@ body {
   columns: var(--text-color);
 }
 
+.banner-text {
+  height:100px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
 .banner:is(.heading, .banner-text) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -659,6 +665,11 @@ body {
 .movie-detail .movie-poster {
   max-width: 300px;
   width: 100%;
+}
+
+.genre { 
+  color: var(--rating-color);
+  padding-bottom: 8px;
 }
 
 .movie-detail .heading {margin-block: 24px 12px;}
