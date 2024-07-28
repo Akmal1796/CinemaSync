@@ -34,13 +34,13 @@ export function sidebar() {
 
                 <p class="title">Language</p>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=en", "English")'>English</a>
+                <a href="./movie-list.php" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=en", "English")'>English</a>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=ta", "Tamil")'>Tamil</a>
+                <a href="./movie-list.php" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=ta", "Tamil")'>Tamil</a>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=hi", "Hindi")'>Hindi</a>
+                <a href="./movie-list.php" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=hi", "Hindi")'>Hindi</a>
 
-                <a href="./movie-list.html" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=ja", "Japanese")'>Japanese</a>
+                <a href="./movie-list.php" menu-close class="sidebar-link" onclick='getMovieList("with_original_language=ja", "Japanese")'>Japanese</a>
 
             </div>
 
@@ -59,7 +59,7 @@ export function sidebar() {
             
             const link = document.createElement("a");
             link.classList.add("sidebar-link");
-            link.setAttribute("href", "./movie-list.html");
+            link.setAttribute("href", "./movie-list.php");
             link.setAttribute("menu-close", "");
             link.setAttribute("onclick", `getMovieList("with_genres=${genreId}", "${genreName}")`);
 
