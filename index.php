@@ -144,7 +144,7 @@ $conn->close();
     <script src="./assets/js/index.js" type="module"></script>
 </head>
 
-<body>
+<body id="body">
 
     <!-- HEADER -->
     <header class="header">
