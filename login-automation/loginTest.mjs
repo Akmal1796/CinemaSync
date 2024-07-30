@@ -11,7 +11,7 @@ describe('Login Test', function() {
         driver = await new Builder().forBrowser('chrome').build();
     });
 
-    it('should log in successfully', async function() {
+    it('Loggin successfully', async function() {
         await driver.get('http://localhost/Tvflix/login.html');
 
         // Fill in the login form
@@ -36,8 +36,8 @@ describe('Login Test', function() {
         const element = await driver.findElement(By.id('body'));
         expect(await element.isDisplayed()).to.be.true;
 
-        // Stay on the home page for at least 4 seconds
-        await new Promise(resolve => setTimeout(resolve, 4000));
+        // Stay on the home page for at least 5 seconds
+        await new Promise(resolve => setTimeout(resolve, 5000));
     });
 
     after(async function() {
