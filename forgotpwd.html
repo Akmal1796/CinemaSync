@@ -6,14 +6,35 @@
 </head>
 <body>
     <h2>Forgot Password</h2>
-    <form action="reset_password.php" method="post">
+    <form id="forgot-password-form" method="post">
         <label for="email">Email:</label><br/>
-        <input type="text" name="email" required><br/>
+        <input type="text" id="email" name="email" required><br/>
         <label for="new_password">New Password:</label><br/>
-        <input type="password" name="new_password" required><br/>
+        <input type="password" id="new_password" name="new_password" required><br/>
         <label for="confirm_password">Confirm New Password:</label><br/>
-        <input type="password" name="confirm_password" required><br><br/>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br/>
         <input type="submit" value="Reset Password">
     </form>
+    <script>
+        document.getElementById('forgot-password-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = {
+                email: document.getElementById('email').value,
+                new_password: document.getElementById('new_password').value,
+                confirm_password: document.getElementById('confirm_password').value,
+            };
+
+            const response = await fetch('reset_password.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        });
+    </script>
 </body>
 </html>
