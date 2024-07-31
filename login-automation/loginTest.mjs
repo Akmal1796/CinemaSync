@@ -5,18 +5,25 @@ import { describe, it, after, before } from 'mocha';
 let driver;
 
 describe('Login Test', function() {
-    this.timeout(30000); // Set timeout to 30 seconds
+    this.timeout(60000); // Set timeout to 60 seconds
 
     before(async function() {
         driver = await new Builder().forBrowser('chrome').build();
     });
 
-    it('Loggin successfully', async function() {
+    it('Loggin successful', async function() {
         await driver.get('http://localhost/Tvflix/login.html');
+
+        // Add a delay to observe the page loading
+        await new Promise(resolve => setTimeout(resolve, 2000));
 
         // Fill in the login form
         await driver.findElement(By.name('email')).sendKeys('testuser@example.com');
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Add delay after entering email
+
         await driver.findElement(By.name('pwd')).sendKeys('123');
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Add delay after entering password
+
         await driver.findElement(By.css('input[type="submit"]')).click();
 
         // Handle the alert if it appears
@@ -32,11 +39,26 @@ describe('Login Test', function() {
         // Wait for the redirection and check the result
         await driver.wait(until.urlIs('http://localhost/Tvflix/index.php'), 10000);
 
+        // Add a delay to observe the redirected page
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
         // Assert that the login was successful by checking for an element on the home page
         const element = await driver.findElement(By.id('body'));
         expect(await element.isDisplayed()).to.be.true;
 
-        // Stay on the home page for at least 5 seconds
+        // Add a delay to observe the profile icon
+        await new Promise(resolve => setTimeout(resolve, 5000));
+
+        // Click the profile icon
+        await driver.findElement(By.id('profile-icon')).click();
+
+        // Add a delay to observe the dropdown menu
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // Click the user name in the dropdown menu
+        await driver.findElement(By.xpath("//a[@href='profile_edit.php']/button")).click();
+
+        // Stay on the user profile page for at least 5 seconds
         await new Promise(resolve => setTimeout(resolve, 5000));
     });
 
