@@ -27,5 +27,5 @@ A dynamic movie recommendation platform that fetches real-time movie and TV show
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Akmal1796/CinemaSync
+   git clone https://github.com/Akmal1796/TvFlix
    ```
